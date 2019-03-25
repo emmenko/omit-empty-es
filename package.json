@@ -1,0 +1,49 @@
+{
+  "name": "omit-empty-es",
+  "description": "(fork of omit-empty) Recursively omit empty properties from an object. Omits empty objects, arrays, strings or zero.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/emmenko/omit-empty-es",
+  "repository": "emmenko/omit-empty-es",
+  "license": "MIT",
+  "files": [
+    "dist/index.js"
+  ],
+  "main": "dist/index.js",
+  "modules": "dist/index.js",
+  "scripts": {
+    "build": "parcel build src/index.js --experimental-scope-hoisting",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-transform-regenerator": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0",
+    "parcel-bundler": "^1.12.3"
+  },
+  "keywords": [
+    "clear",
+    "delete",
+    "empty",
+    "find",
+    "has",
+    "hasown",
+    "javascript",
+    "js",
+    "key",
+    "keys",
+    "node",
+    "node-js",
+    "object",
+    "omit",
+    "properties",
+    "property",
+    "remove",
+    "util",
+    "utilities",
+    "utility",
+    "value"
+  ]
+}
