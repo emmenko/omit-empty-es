@@ -1,4 +1,4 @@
-import typeOf from "./kind-of";
+import typeOf from './kind-of';
 
 const omitEmpty = (obj, options) => {
   const omitZero = options ? options.omitZero : false;
@@ -9,7 +9,7 @@ const omitEmpty = (obj, options) => {
       value = value.map(v => omit(v)).filter(v => !isEmpty(v, omitZero));
     }
 
-    if (typeOf(value) === "object") {
+    if (typeOf(value) === 'object') {
       const result = {};
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
@@ -30,33 +30,33 @@ const omitEmpty = (obj, options) => {
 
   const res = omit(obj);
   if (res === void 0) {
-    return typeOf(obj) === "object" ? {} : res;
+    return typeOf(obj) === 'object' ? {} : res;
   }
   return res;
 };
 
 function isEmpty(value, omitZero) {
   switch (typeOf(value)) {
-    case "null":
-    case "undefined":
+    case 'null':
+    case 'undefined':
       return true;
-    case "boolean":
-    case "function":
-    case "date":
-    case "regexp":
+    case 'boolean':
+    case 'function':
+    case 'date':
+    case 'regexp':
       return false;
-    case "string":
-    case "arguments":
+    case 'string':
+    case 'arguments':
       return value.length === 0;
-    case "file":
-    case "map":
-    case "set":
+    case 'file':
+    case 'map':
+    case 'set':
       return value.size === 0;
-    case "number":
+    case 'number':
       return omitZero ? value === 0 : false;
-    case "error":
-      return value.message === "";
-    case "array":
+    case 'error':
+      return value.message === '';
+    case 'array':
       // eslint-disable-next-line no-restricted-syntax
       for (const ele of value) {
         if (!isEmpty(ele, omitZero)) {
@@ -64,7 +64,7 @@ function isEmpty(value, omitZero) {
         }
       }
       return true;
-    case "object":
+    case 'object':
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
         if (!isEmpty(value[key], omitZero)) {

@@ -9,10 +9,12 @@
     "dist",
     "CHANGELOG.md"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/omit-empty.cjs.js",
+  "module": "dist/omit-empty.esm.js",
   "scripts": {
-    "build": "parcel build src/index.js --experimental-scope-hoisting",
+    "prebuild": "rimraf dist",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "format": "prettier --write '**/*.js'",
     "lint": "eslint src/*",
     "test": "jest"
   },
@@ -23,6 +25,7 @@
     "@babel/preset-env": "^7.4.2",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -31,7 +34,13 @@
     "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^24.5.0",
-    "parcel-bundler": "^1.12.3"
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.7.3",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-cleanup": "^3.1.1",
+    "rollup-plugin-commonjs": "^9.2.2",
+    "rollup-plugin-node-resolve": "^4.0.1"
   },
   "keywords": [
     "clear",
