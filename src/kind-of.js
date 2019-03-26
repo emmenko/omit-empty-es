@@ -1,10 +1,10 @@
-var toString = Object.prototype.toString;
+const { toString } = Object.prototype;
 
 function kindOf(val) {
   if (val === void 0) return "undefined";
   if (val === null) return "null";
 
-  var type = typeof val;
+  let type = typeof val;
   if (type === "boolean") return "boolean";
   if (type === "string") return "string";
   if (type === "number") return "number";
@@ -59,6 +59,8 @@ function kindOf(val) {
       return "float32array";
     case "Float64Array":
       return "float64array";
+    default:
+      break;
   }
 
   if (isGeneratorObj(val)) {
@@ -79,6 +81,8 @@ function kindOf(val) {
       return "stringiterator";
     case "[object Array Iterator]":
       return "arrayiterator";
+    default:
+      break;
   }
 
   // other
@@ -125,7 +129,7 @@ function isRegexp(val) {
   );
 }
 
-function isGeneratorFn(name, val) {
+function isGeneratorFn(name) {
   return ctorName(name) === "GeneratorFunction";
 }
 

@@ -13,17 +13,15 @@ describe("omit-empty", () => {
     expect(omitEmpty(["foo"])).toEqual(["foo"]);
   });
 
-  it("should return undefined when the value is an empty string", () => {
-    expect(omitEmpty("")).toBe(void 0);
-  });
-
   it("should omit empty values from the given object", () => {
-    let fixture = { one: {}, a: "", b: "c" };
-    expect(omitEmpty(fixture)).toEqual({ b: "c" });
+    expect(omitEmpty({ one: {}, a: "", b: "c" })).toEqual({ b: "c" });
+    expect(omitEmpty({ a: undefined, b: "c" })).toEqual({ b: "c" });
+    expect(omitEmpty({ a: null, b: "c" })).toEqual({ b: "c" });
+    expect(omitEmpty({ a: "", b: "c" })).toEqual({ b: "c" });
   });
 
   it("should omit deeply nested empty values from the given object", () => {
-    let fixture = {
+    const fixture = {
       foo: [{ a: "" }, { bar: "baz" }, [{ a: "" }, { bar: "baz" }]],
       one: {
         two: { three: { four: { abc: { xyz: "" } } }, five: "", six: "seven" }
@@ -45,12 +43,6 @@ describe("omit-empty", () => {
     });
   });
 
-  it("should omit empty objects.", () => {
-    expect(omitEmpty({ a: undefined, b: "c" })).toEqual({ b: "c" });
-    expect(omitEmpty({ a: null, b: "c" })).toEqual({ b: "c" });
-    expect(omitEmpty({ a: "", b: "c" })).toEqual({ b: "c" });
-  });
-
   it("should omit nested empty objects.", () => {
     expect(omitEmpty({ a: { b: undefined, c: "d" } })).toEqual({
       a: { c: "d" }
@@ -66,8 +58,9 @@ describe("omit-empty", () => {
   });
 
   it("should not omit functions", () => {
-    let fn = (a, b, c) => {};
-    let fn2 = () => {};
+    // eslint-disable-next-line no-unused-vars
+    const fn = (a, b, c) => {};
+    const fn2 = () => {};
     expect(omitEmpty({ a: fn, b: fn2 })).toEqual({ a: fn, b: fn2 });
   });
 
@@ -115,14 +108,14 @@ describe("omit-empty", () => {
   });
 
   it("should not omit zero", () => {
-    let actual = omitEmpty({ a: { b: { c: "foo", d: 0 }, foo: [] } });
-    let expected = { a: { b: { c: "foo", d: 0 } } };
+    const actual = omitEmpty({ a: { b: { c: "foo", d: 0 }, foo: [] } });
+    const expected = { a: { b: { c: "foo", d: 0 } } };
     expect(actual).toEqual(expected);
   });
 
   it("should omit zero when omitZero is true", () => {
-    let expected = { a: { b: { c: "foo" } } };
-    let actual = omitEmpty(
+    const expected = { a: { b: { c: "foo" } } };
+    const actual = omitEmpty(
       { a: { b: { c: "foo", d: 0 }, foo: [] } },
       { omitZero: true }
     );
@@ -130,24 +123,24 @@ describe("omit-empty", () => {
   });
 
   it("should not omit boolean false", () => {
-    let actual = omitEmpty({
+    const actual = omitEmpty({
       a: { b: { c: "foo", d: 0 }, foo: [], bar: false }
     });
-    let expected = { a: { b: { c: "foo", d: 0 }, bar: false } };
+    const expected = { a: { b: { c: "foo", d: 0 }, bar: false } };
     expect(actual).toEqual(expected);
   });
 
   it("should not omit Dates", () => {
-    let today = new Date();
-    let actual = omitEmpty({
+    const today = new Date();
+    const actual = omitEmpty({
       a: { b: { c: "foo", d: today }, foo: [], bar: false }
     });
-    let expected = { a: { b: { c: "foo", d: today }, bar: false } };
+    const expected = { a: { b: { c: "foo", d: today }, bar: false } };
     expect(actual).toEqual(expected);
   });
 
   it("should omit deeply nested values", () => {
-    let o = {
+    const o = {
       a: {
         b: { c: "foo", d: 0, e: { f: { g: {}, h: { i: "i" } } } },
         foo: [["bar", "baz"], []],

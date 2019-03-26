@@ -1,17 +1,19 @@
-import typeOf from "kind-of";
+import typeOf from "./kind-of";
 
 const omitEmpty = (obj, options) => {
-  let omitZero = options ? options.omitZero : false;
+  const omitZero = options ? options.omitZero : false;
 
-  let omit = value => {
+  /* eslint-disable no-param-reassign */
+  const omit = value => {
     if (Array.isArray(value)) {
       value = value.map(v => omit(v)).filter(v => !isEmpty(v, omitZero));
     }
 
     if (typeOf(value) === "object") {
-      let result = {};
-      for (let key of Object.keys(value)) {
-        let val = omit(value[key]);
+      const result = {};
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of Object.keys(value)) {
+        const val = omit(value[key]);
         if (val !== void 0) {
           result[key] = val;
         }
@@ -22,9 +24,11 @@ const omitEmpty = (obj, options) => {
     if (!isEmpty(value, omitZero)) {
       return value;
     }
+    return void 0;
   };
+  /* eslint-enable no-param-reassign */
 
-  let res = omit(obj);
+  const res = omit(obj);
   if (res === void 0) {
     return typeOf(obj) === "object" ? {} : res;
   }
@@ -53,14 +57,16 @@ function isEmpty(value, omitZero) {
     case "error":
       return value.message === "";
     case "array":
-      for (let ele of value) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const ele of value) {
         if (!isEmpty(ele, omitZero)) {
           return false;
         }
       }
       return true;
     case "object":
-      for (let key of Object.keys(value)) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (const key of Object.keys(value)) {
         if (!isEmpty(value[key], omitZero)) {
           return false;
         }

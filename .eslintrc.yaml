@@ -1,0 +1,25 @@
+---
+parser: babel-eslint
+parserOptions:
+  ecmaVersion: 8
+  sourceType: module
+extends:
+  - "airbnb-base"
+  - "plugin:jest/recommended"
+  - "prettier"
+env:
+  browser: true
+  es6: true
+  jest: true
+  node: true
+  mocha: false
+plugins:
+  - "import"
+  - "jest"
+  - "prettier"
+rules:
+  "no-void": 0
+  "no-use-before-define":
+    - error
+    - functions: false
+  "no-new-wrappers": 0

@@ -10,6 +10,10 @@ This is a (_temporary_) **fork** of the [`omit-empty`](https://github.com/jonsch
 npm install --save omit-empty-es
 ```
 
+```bash
+yarn add omit-empty-es
+```
+
 ### Usage
 
 ```js
