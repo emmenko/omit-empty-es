@@ -1,3 +1,7 @@
+# 1.0.3
+
+- bundle using [Rollup](https://rollupjs.org/)
+
 # 1.0.2
 
 - remove UMD build
