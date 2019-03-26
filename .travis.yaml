@@ -1,0 +1,21 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - "10"
+  - "8"
+
+notifications:
+  email: false
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
+  - set -e
+  - yarn lint
+  - yarn test
+  - yarn build
