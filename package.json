@@ -9,14 +9,10 @@
     "dist",
     "CHANGELOG.md"
   ],
-  "main": "dist/esm/index.js",
-  "module": "dist/esm/index.js",
-  "browser": "dist/umd/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "yarn build:es && yarn build:umd",
-    "build:es": "parcel build src/index.js --experimental-scope-hoisting -d dist/esm",
-    "build:umd": "parcel build src/index.js --global omitEmpty -d dist/umd",
+    "build": "parcel build src/index.js --experimental-scope-hoisting",
     "lint": "eslint src/*",
     "test": "jest"
   },
@@ -35,8 +31,7 @@
     "eslint-plugin-jest": "^22.4.1",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^24.5.0",
-    "parcel-bundler": "^1.12.3",
-    "rimraf": "^2.6.3"
+    "parcel-bundler": "^1.12.3"
   },
   "keywords": [
     "clear",
