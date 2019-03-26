@@ -1,7 +1,7 @@
 {
   "name": "omit-empty-es",
   "description": "(fork of omit-empty) Recursively omit empty properties from an object. Omits empty objects, arrays, strings or zero.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/emmenko/omit-empty-es",
   "repository": "emmenko/omit-empty-es",
   "license": "MIT",

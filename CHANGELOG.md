@@ -1,3 +1,7 @@
+# 1.0.2
+
+- remove UMD build
+
 # 1.0.1
 
 - define module entry points and UMD bundle
