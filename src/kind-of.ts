@@ -1,6 +1,6 @@
 const { toString } = Object.prototype;
 
-function kindOf(val) {
+function kindOf(val: unknown): string {
   if (val === void 0) return 'undefined';
   if (val === null) return 'null';
 
@@ -68,17 +68,23 @@ function kindOf(val) {
   }
 
   // Non-plain objects
+  // @ts-expect-error
   type = toString.call(val);
   switch (type) {
+    // @ts-expect-error
     case '[object Object]':
       return 'object';
     // iterators
+    // @ts-expect-error
     case '[object Map Iterator]':
       return 'mapiterator';
+    // @ts-expect-error
     case '[object Set Iterator]':
       return 'setiterator';
+    // @ts-expect-error
     case '[object String Iterator]':
       return 'stringiterator';
+    // @ts-expect-error
     case '[object Array Iterator]':
       return 'arrayiterator';
     default:
@@ -86,21 +92,21 @@ function kindOf(val) {
   }
 
   // other
-  return type
-    .slice(8, -1)
-    .toLowerCase()
-    .replace(/\s/g, '');
+  return type.slice(8, -1).toLowerCase().replace(/\s/g, '');
 }
 
+// @ts-expect-error
 function ctorName(val) {
   return val.constructor ? val.constructor.name : null;
 }
 
+// @ts-expect-error
 function isArray(val) {
   if (Array.isArray) return Array.isArray(val);
   return val instanceof Array;
 }
 
+// @ts-expect-error
 function isError(val) {
   return (
     val instanceof Error ||
@@ -110,6 +116,7 @@ function isError(val) {
   );
 }
 
+// @ts-expect-error
 function isDate(val) {
   if (val instanceof Date) return true;
   return (
@@ -119,6 +126,7 @@ function isDate(val) {
   );
 }
 
+// @ts-expect-error
 function isRegexp(val) {
   if (val instanceof RegExp) return true;
   return (
@@ -129,10 +137,12 @@ function isRegexp(val) {
   );
 }
 
+// @ts-expect-error
 function isGeneratorFn(name) {
   return ctorName(name) === 'GeneratorFunction';
 }
 
+// @ts-expect-error
 function isGeneratorObj(val) {
   return (
     typeof val.throw === 'function' &&
@@ -141,6 +151,7 @@ function isGeneratorObj(val) {
   );
 }
 
+// @ts-expect-error
 function isArguments(val) {
   try {
     if (typeof val.length === 'number' && typeof val.callee === 'function') {
@@ -158,7 +169,7 @@ function isArguments(val) {
  * If you need to support Safari 5-7 (8-10 yr-old browser),
  * take a look at https://github.com/feross/is-buffer
  */
-
+// @ts-expect-error
 function isBuffer(val) {
   if (val.constructor && typeof val.constructor.isBuffer === 'function') {
     return val.constructor.isBuffer(val);

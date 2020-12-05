@@ -1,23 +1,34 @@
 import typeOf from './kind-of';
 
-const omitEmpty = (obj, options) => {
+type Options = {
+  omitZero: boolean;
+};
+
+const omitEmpty = <Output, Input = unknown>(
+  obj: Input,
+  options?: Options
+): Output => {
   const omitZero = options ? options.omitZero : false;
 
   /* eslint-disable no-param-reassign */
-  const omit = value => {
+  const omit = (value: Input) => {
     if (Array.isArray(value)) {
-      value = value.map(v => omit(v)).filter(v => !isEmpty(v, omitZero));
+      // @ts-expect-error
+      value = value.map((v) => omit(v)).filter((v) => !isEmpty(v, omitZero));
     }
 
     if (typeOf(value) === 'object') {
       const result = {};
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
+        // @ts-expect-error
         const val = omit(value[key]);
         if (val !== void 0) {
+          // @ts-expect-error
           result[key] = val;
         }
       }
+      // @ts-expect-error
       value = result;
     }
 
@@ -28,14 +39,14 @@ const omitEmpty = (obj, options) => {
   };
   /* eslint-enable no-param-reassign */
 
-  const res = omit(obj);
+  let res = omit(obj) as unknown;
   if (res === void 0) {
-    return typeOf(obj) === 'object' ? {} : res;
+    res = typeOf(obj) === 'object' ? {} : res;
   }
-  return res;
+  return (res as unknown) as Output;
 };
 
-function isEmpty(value, omitZero) {
+function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
   switch (typeOf(value)) {
     case 'null':
     case 'undefined':
@@ -47,17 +58,22 @@ function isEmpty(value, omitZero) {
       return false;
     case 'string':
     case 'arguments':
+      // @ts-expect-error
       return value.length === 0;
     case 'file':
     case 'map':
     case 'set':
+      // @ts-expect-error
       return value.size === 0;
     case 'number':
+      // @ts-expect-error
       return omitZero ? value === 0 : false;
     case 'error':
+      // @ts-expect-error
       return value.message === '';
     case 'array':
       // eslint-disable-next-line no-restricted-syntax
+      // @ts-expect-error
       for (const ele of value) {
         if (!isEmpty(ele, omitZero)) {
           return false;
@@ -67,6 +83,7 @@ function isEmpty(value, omitZero) {
     case 'object':
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
+        // @ts-expect-error
         if (!isEmpty(value[key], omitZero)) {
           return false;
         }

@@ -59,7 +59,10 @@ describe('omit-empty', () => {
 
   it('should not omit functions', () => {
     // eslint-disable-next-line no-unused-vars
+    // @ts-expect-error
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const fn = (a, b, c) => {};
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const fn2 = () => {};
     expect(omitEmpty({ a: fn, b: fn2 })).toEqual({ a: fn, b: fn2 });
   });
