@@ -1,5 +1,23 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":pinOnlyDevDependencies",
+    "schedule:monthly"
+  ],
+  "separateMajorMinor": true,
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "updateTypes": ["minor", "patch"],
+      "groupName": "all dependencies",
+      "groupSlug": "all"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "labels": [],
+  "ignoreDeps": []
 }
