@@ -19,7 +19,6 @@
   "main": "dist/omit-empty-es.cjs.js",
   "module": "dist/omit-empty-es.esm.js",
   "scripts": {
-    "postinstall": "preconstruct dev",
     "build": "preconstruct build",
     "watch": "preconstruct watch",
     "format": "prettier --write '**/*.{js,ts,tsx}'",
