@@ -1,5 +1,11 @@
 ## 1.1.0
 
+## 1.1.1
+
+### Patch Changes
+
+- [`4abfbae`](https://github.com/emmenko/omit-empty-es/commit/4abfbaea37c6d5daa1fbb11873c5d999243649e5) Thanks [@emmenko](https://github.com/emmenko)! - Fix wrong production bundles
+
 ### Minor Changes
 
 - [`f968e80`](https://github.com/emmenko/omit-empty-es/commit/f968e80fa3d15ce9be9b41dbee4457d988637c48) [#1](https://github.com/emmenko/omit-empty-es/pull/1) Thanks [@emmenko](https://github.com/emmenko)! - Use TypeScript, improve CI tools.
