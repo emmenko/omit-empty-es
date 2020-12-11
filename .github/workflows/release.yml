@@ -58,6 +58,9 @@ jobs:
           NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Building packages
+        run: yarn build
+
       - name: Creating Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@master
