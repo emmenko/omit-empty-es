@@ -1,5 +1,11 @@
 ## 1.1.0
 
+## 1.1.2
+
+### Patch Changes
+
+- [`e0e7cc1`](https://github.com/emmenko/omit-empty-es/commit/e0e7cc18a3d8d3cc0c3ee25595c01cfbbdbce8b3) Thanks [@emmenko](https://github.com/emmenko)! - Remove postinstall script
+
 ## 1.1.1
 
 ### Patch Changes
