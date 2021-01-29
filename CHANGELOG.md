@@ -1,5 +1,11 @@
 ## 1.1.0
 
+## 1.1.3
+
+### Patch Changes
+
+- [`e3e0c6a`](https://github.com/emmenko/omit-empty-es/commit/e3e0c6af13ab7defb57a717df965b9ff0271a628) [#10](https://github.com/emmenko/omit-empty-es/pull/10) Thanks [@renovate](https://github.com/apps/renovate)! - chore(deps): update all dependencies
+
 ## 1.1.2
 
 ### Patch Changes
