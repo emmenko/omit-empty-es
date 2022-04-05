@@ -16,22 +16,18 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Read .nvmrc
-        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
+        uses: actions/checkout@v3
 
       - name: Setup Node (uses version in .nvmrc)
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          node-version-file: '.nvmrc'
 
       - name: Get yarn cache
         id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -39,7 +35,10 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
+
+      - name: Check for unmet constraints (fix w/ "yarn constraints --fix")
+        run: yarn constraints
 
       - name: Building packages
         run: yarn build
@@ -47,8 +46,8 @@ jobs:
       - name: Running static type checking
         run: yarn typecheck
 
-      - name: Running linters and tests
+      - name: Running linters
         run: yarn lint
 
-      - name: Running linters and tests
+      - name: Running tests
         run: yarn test

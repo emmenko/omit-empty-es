@@ -1,3 +1,6 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
@@ -7,7 +10,6 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:jest/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   plugins: ['import', 'jest', 'prettier', '@typescript-eslint/eslint-plugin'],
   rules: {
