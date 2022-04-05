@@ -1,3 +1,6 @@
+/**
+ * @type {import('@babel/core').ConfigFunction}
+ */
 module.exports = function getBabelPreset(api) {
   if (api) {
     // Cache the returned value forever and don't call this function again.
@@ -23,6 +26,9 @@ module.exports = function getBabelPreset(api) {
     );
   }
 
+  /**
+   * @type {import('@babel/core').TransformOptions}
+   */
   return {
     presets: [
       isEnvTest && [

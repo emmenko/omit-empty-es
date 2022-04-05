@@ -158,7 +158,7 @@ function isArguments(val) {
       return true;
     }
   } catch (err) {
-    if (err.message.indexOf('callee') !== -1) {
+    if (err instanceof Error && err.message.indexOf('callee') !== -1) {
       return true;
     }
   }
