@@ -20,6 +20,7 @@ const omitEmpty = <Output, Input = unknown>(
     if (typeOf(value) === 'object') {
       const result = {};
       // eslint-disable-next-line no-restricted-syntax
+      // @ts-expect-error
       for (const key of Object.keys(value)) {
         // @ts-expect-error
         const val = omit(value[key]);
@@ -43,7 +44,7 @@ const omitEmpty = <Output, Input = unknown>(
   if (res === void 0) {
     res = typeOf(obj) === 'object' ? {} : res;
   }
-  return (res as unknown) as Output;
+  return res as unknown as Output;
 };
 
 function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
@@ -66,7 +67,6 @@ function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
       // @ts-expect-error
       return value.size === 0;
     case 'number':
-      // @ts-expect-error
       return omitZero ? value === 0 : false;
     case 'error':
       // @ts-expect-error
@@ -82,6 +82,7 @@ function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
       return true;
     case 'object':
       // eslint-disable-next-line no-restricted-syntax
+      // @ts-expect-error
       for (const key of Object.keys(value)) {
         // @ts-expect-error
         if (!isEmpty(value[key], omitZero)) {
