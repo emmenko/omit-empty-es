@@ -1,5 +1,15 @@
 ## 1.1.0
 
+## 1.2.0
+
+### Minor Changes
+
+- [#38](https://github.com/emmenko/omit-empty-es/pull/38) [`c427f1b`](https://github.com/emmenko/omit-empty-es/commit/c427f1b748fbfcf738160abbd42d046932ce72e3) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies and repository tooling
+
+### Patch Changes
+
+- [#49](https://github.com/emmenko/omit-empty-es/pull/49) [`d45b316`](https://github.com/emmenko/omit-empty-es/commit/d45b316dfa656deab4d7da357aad6b5caa110a44) Thanks [@emmenko](https://github.com/emmenko)! - Update dependencies
+
 ## 1.1.3
 
 ### Patch Changes
