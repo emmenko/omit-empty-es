@@ -2725,10 +2725,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.37":
-  version: 16.18.37
-  resolution: "@types/node@npm:16.18.37"
-  checksum: ac9549a48ded76f99185e0bdd3f52af202229688d0000af250ce4060e22991cb0e2f950c5de25125ef6221cb092ebdf195eb2e9edfc0a49623252c73be2fa0e0
+"@types/node@npm:18.18.6":
+  version: 18.18.6
+  resolution: "@types/node@npm:18.18.6"
+  checksum: a847639b8455fd3dfa6dbc2917274c82c9db789f1d41aaf69f94ac6c9e54c3c1dd29be6e1e1ccd7c17e54db3d78d7011bc4e70544c6447ceca253dccc0a187e1
   languageName: node
   linkType: hard
 
@@ -7318,7 +7318,7 @@ __metadata:
     "@commitlint/config-conventional": 17.6.6
     "@preconstruct/cli": 2.7.0
     "@types/jest": 29.5.2
-    "@types/node": 16.18.37
+    "@types/node": 18.18.6
     "@typescript-eslint/eslint-plugin": 5.60.1
     "@typescript-eslint/parser": 5.60.1
     babel-jest: 29.5.0
